@@ -1,46 +1,27 @@
-# Project Y – Digital Order Request Platform (Oppdrag 2026)
+# Project Y – Digital Order Request Platform
 
-Project Y is a digital solution developed for **IM Elvebakken** to improve the way users submit task and assignment requests.  
-The goal of the project is to create a structured and user-friendly platform where all necessary information is collected the first time, reducing unclear requests and inefficient follow-up.
+Project Y is a digital solution made for **IM Elvebakken** to improve how users send in task and assignment requests.
 
-This project combines **frontend development**, **backend integration**, and **database storage** into one complete system.
-
----
-
-##  Main Purpose
-
-The platform is designed to make it easier for:
-
-- External customers  
-- Students  
-- Employees  
-
-to submit structured order requests in a clear and professional way.
-
-At the same time, it provides IM Elvebakken with better control and overview of incoming assignments.
+The goal is to create a structured system where all important information is collected in one place, making follow-up easier and more efficient.
 
 ---
 
-## Features
+## What the Website Does
 
-###  Landing Page + Submission Form
-Users can submit an order request through a modern landing page that includes:
+Users can submit an order request through a simple form including:
 
-- Full name  
-- Email address  
+- Name  
+- Email  
 - Optional phone number  
-- Detailed task description  
-- Desired deadline  
+- Task description  
+- Deadline  
 
-The form includes input validation to ensure correct and complete information.
+The form validates the input and sends the data to the backend using a POST request.
 
 ---
 
-### Backend + API Integration
-The project includes a backend built with **Node.js and Express**.
+## How It Works
 
-When a user submits the form:
-
-1. The data is sent as JSON using a **POST request**
-2. The backend receives the request through the API endpoint:
+1. The user fills out the form on the landing page  
+2. The request is sent to the backend API:
 
