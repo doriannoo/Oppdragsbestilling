@@ -11,14 +11,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Pek til mappene
-const frontendPath = path.join(__dirname, "..", "Hjemmeside");
+const hjemmesidePath = path.join(__dirname, "..", "Hjemmeside");
 const personvernPath = path.join(__dirname, "..", "Personvern");
 
-// Server Hjemmeside på / (index, css, js, admin osv.)
-app.use(express.static(frontendPath));
+// ✅ 1) Server Hjemmeside både som ROOT og som /Hjemmeside
+app.use(express.static(hjemmesidePath));
+app.use("/Hjemmeside", express.static(hjemmesidePath));
 
-// Server Personvern-mappa på /personvern
-app.use("/personvern", express.static(personvernPath));
+// ✅ 2) Server Personvern som /Personvern (så Live Server-linker fungerer også på localhost)
+app.use("/Personvern", express.static(personvernPath));
 
 // Database
 const db = new sqlite3.Database("./database.db");
@@ -71,7 +72,7 @@ app.get("/api/orders", (req, res) => {
   });
 });
 
-// DELETE: slett bestilling (hvis du allerede har dette i admin)
+// DELETE: slett bestilling
 app.delete("/api/orders/:id", (req, res) => {
   const id = Number(req.params.id);
   if (!id) return res.status(400).json({ error: "Ugyldig ID." });
@@ -84,7 +85,7 @@ app.delete("/api/orders/:id", (req, res) => {
 
 // Forsiden: send index.html
 app.get("/", (req, res) => {
-  res.sendFile(path.join(frontendPath, "index.html"));
+  res.sendFile(path.join(hjemmesidePath, "index.html"));
 });
 
 app.listen(3000, () => {
