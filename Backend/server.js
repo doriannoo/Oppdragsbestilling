@@ -10,11 +10,15 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Her peker vi på ../Hjemmeside
+// Pek til mappene
 const frontendPath = path.join(__dirname, "..", "Hjemmeside");
+const personvernPath = path.join(__dirname, "..", "Personvern");
 
-// Server alle filer i Hjemmeside (index.html, style.css, script.js osv.)
+// Server Hjemmeside på / (index, css, js, admin osv.)
 app.use(express.static(frontendPath));
+
+// Server Personvern-mappa på /personvern
+app.use("/personvern", express.static(personvernPath));
 
 // Database
 const db = new sqlite3.Database("./database.db");
@@ -42,7 +46,6 @@ app.post("/api/orders", (req, res) => {
   if (!name || !email || !description || !deadline) {
     return res.status(400).json({ error: "Mangler obligatoriske felt." });
   }
-
   if (!isValidEmail(email)) {
     return res.status(400).json({ error: "Ugyldig e-post." });
   }
@@ -52,21 +55,10 @@ app.post("/api/orders", (req, res) => {
   db.run(
     `INSERT INTO orders (createdAt, name, email, phone, description, deadline)
      VALUES (?, ?, ?, ?, ?, ?)`,
-    [
-      createdAt,
-      name.trim(),
-      email.trim(),
-      (phone || "").trim(),
-      description.trim(),
-      deadline.trim()
-    ],
+    [createdAt, name.trim(), email.trim(), (phone || "").trim(), description.trim(), deadline.trim()],
     function (err) {
       if (err) return res.status(500).json({ error: "Database-feil." });
-
-      res.status(201).json({
-        ok: true,
-        id: this.lastID
-      });
+      res.status(201).json({ ok: true, id: this.lastID });
     }
   );
 });
@@ -79,28 +71,16 @@ app.get("/api/orders", (req, res) => {
   });
 });
 
-
-// ✅ DELETE: slett en bestilling (for admin-siden)
+// DELETE: slett bestilling (hvis du allerede har dette i admin)
 app.delete("/api/orders/:id", (req, res) => {
-  const id = req.params.id;
+  const id = Number(req.params.id);
+  if (!id) return res.status(400).json({ error: "Ugyldig ID." });
 
-  db.run("DELETE FROM orders WHERE id = ?", [id], function (err) {
-    if (err) {
-      return res.status(500).json({ error: "Database-feil." });
-    }
-
-    // Hvis ingen bestilling ble slettet
-    if (this.changes === 0) {
-      return res.status(404).json({ error: "Fant ikke bestilling." });
-    }
-
-    res.json({
-      ok: true,
-      deleted: this.changes
-    });
+  db.run(`DELETE FROM orders WHERE id = ?`, [id], function (err) {
+    if (err) return res.status(500).json({ error: "Database-feil." });
+    res.json({ ok: true, deleted: this.changes });
   });
 });
-
 
 // Forsiden: send index.html
 app.get("/", (req, res) => {

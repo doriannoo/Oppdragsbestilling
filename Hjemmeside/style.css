@@ -327,4 +327,20 @@ textarea {
   opacity: 0;
 }
 
+/* Holder secret admin + logo samlet til venstre */
+.left-group{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Hemmelig admin-link (usynlig) */
+.secret-admin{
+  display:inline-block;
+  width:14px;
+  height:14px;
+  opacity:0;
+}
+
+
 

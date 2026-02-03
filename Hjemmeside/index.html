@@ -14,16 +14,17 @@
 
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <div class="container header-inner">
 
-      <div class="logo">
-        <!-- ✅ Skjult admin-link (påvirker ikke layout) -->
-        <a href="admin.html" class="secret-admin">.</a>
+      <div class="left-group">
+        <!-- hemmelig admin-link (usynlig) -->
+        <a href="admin.html" class="secret-admin" aria-label="Admin">.</a>
 
-        <div class="logo-box">IM</div>
-        <div class="logo-text">ELVEBAKKEN</div>
+        <div class="logo">
+          <div class="logo-box">IM</div>
+          <div class="logo-text">ELVEBAKKEN</div>
+        </div>
       </div>
 
       <nav class="nav">
@@ -34,7 +35,6 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="container hero-inner">
 
@@ -58,7 +58,6 @@
     </div>
   </section>
 
-  <!-- HVORDAN -->
   <section id="hvordan" class="how">
     <div class="container">
       <h2>Hvordan fungerer det?</h2>
@@ -86,7 +85,6 @@
     </div>
   </section>
 
-  <!-- SKJEMA -->
   <section id="skjema" class="form-section">
     <div class="container">
       <h2>Send inn oppdragsbestilling</h2>
@@ -108,7 +106,7 @@
             placeholder="ola@gmail.com"
             required
             pattern="^[A-Za-z0-9._%+-]+@(gmail\.com|icloud\.com|outlook\.com|hotmail\.com|live\.com|yahoo\.com)$"
-            title="Bruk en gyldig e-post med domene som gmail.com, icloud.com osv."
+            title="Bruk en gyldig e-post med domene som gmail.com, icloud.com, outlook.com osv."
           >
 
           <label>Telefon (valgfritt)</label>
@@ -123,7 +121,7 @@
           >
 
           <label>Beskrivelse av oppdrag</label>
-          <textarea id="beskrivelse" placeholder="Beskriv hva du ønsker..." required></textarea>
+          <textarea id="beskrivelse" placeholder="Beskriv hva du ønsker, målgruppe og eventuelle spesielle behov." required></textarea>
 
           <label>Ønsket deadline</label>
           <input id="deadline" type="date" required>
@@ -134,7 +132,7 @@
 
           <p style="margin-top:10px; color:#64748b; font-weight:600; font-size:13px;">
             Ved innsending lagrer vi informasjonen for å behandle bestillingen.
-            <a href="Personvern.html" style="color:#0f4d86; text-decoration:none; font-weight:800;">
+            <a href="/personvern/Personvern.html" style="color:#0f4d86; text-decoration:none; font-weight:800;">
               Les personvern
             </a>
           </p>
@@ -145,7 +143,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-left">
@@ -156,7 +153,7 @@
       <div class="footer-right">
         Kontakt: <a href="mailto:info@elvebakken.no">info@elvebakken.no</a>
         <span class="dot">•</span>
-        <a href="Personvern.html">Personvern</a>
+        <a href="/personvern/Personvern.html">Personvern</a>
       </div>
     </div>
   </footer>

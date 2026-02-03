@@ -1,0 +1,170 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body{
+  font-family: Inter, Arial, sans-serif;
+  background:#f3f5f8;
+  color:#0f172a;
+
+  /* ✅ gjør at footer ligger nederst */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container{
+  width: min(1040px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* HEADER */
+.header{
+  position: sticky;
+  top: 0;
+  background: rgba(12, 60, 105, 0.85);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+
+.header-inner{
+  height: 72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:white;
+  font-weight:800;
+}
+
+.logo-box{
+  width:34px;
+  height:34px;
+  border-radius:8px;
+  display:grid;
+  place-items:center;
+  background: rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.2);
+  font-weight:800;
+}
+
+.logo-text{
+  letter-spacing:0.5px;
+  font-size:15px;
+  opacity:0.95;
+}
+
+.nav a{
+  color: rgba(255,255,255,0.9);
+  text-decoration:none;
+  font-weight:600;
+}
+.nav a:hover{ text-decoration:underline; }
+
+/* MAIN */
+.main{
+  padding: 34px 0 60px;
+
+  /* ✅ gjør at main tar plassen så footer blir nederst */
+  flex: 1;
+}
+
+h1{
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.intro{
+  color:#64748b;
+  font-weight:600;
+  margin-bottom: 18px;
+  max-width: 70ch;
+}
+
+/* GRID */
+.privacy-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+
+.privacy-card{
+  background:white;
+  border-radius:16px;
+  padding: 16px;
+  border: 1px solid rgba(15,23,42,0.06);
+  box-shadow: 0 6px 16px rgba(15,23,42,0.08);
+}
+
+.privacy-card h2{
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.privacy-card p{
+  color:#475569;
+  font-weight:600;
+  line-height:1.5;
+  font-size: 14px;
+}
+
+.btn{
+  display:inline-block;
+  background: linear-gradient(180deg, #36a154, #1f7a3a);
+  color:white;
+  font-weight:800;
+  padding: 14px 18px;
+  border-radius: 12px;
+  text-decoration:none;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.14);
+}
+
+/* FOOTER (samme stil som hovedside) */
+.footer{
+  background:white;
+  border-top: 1px solid rgba(15,23,42,0.06);
+  padding: 18px 0;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.footer-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.footer-right{
+  color:#64748b;
+  font-weight:600;
+  font-size:13px;
+}
+
+.footer-right a{
+  color:#64748b;
+  text-decoration:none;
+}
+.footer-right a:hover{ text-decoration:underline; }
+
+.dot{
+  margin: 0 8px;
+  opacity: 0.6;
+}
+
+/* Mobil */
+@media (max-width: 900px){
+  .privacy-grid{ grid-template-columns: 1fr; }
+  h1{ font-size: 30px; }
+}
