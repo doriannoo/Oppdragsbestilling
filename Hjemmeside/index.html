@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IM Elvebakken – Oppdragsbestilling</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+
+      <div class="logo">
+        <!-- ✅ Skjult admin-link (påvirker ikke layout) -->
+        <a href="admin.html" class="secret-admin">.</a>
+
+        <div class="logo-box">IM</div>
+        <div class="logo-text">ELVEBAKKEN</div>
+      </div>
+
+      <nav class="nav">
+        <a href="#skjema">Bestill oppdrag</a>
+        <a href="#hvordan">Hvordan det fungerer</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+
+      <div class="hero-text">
+        <h1>Bestill oppdrag enkelt<br>og strukturert</h1>
+        <p>
+          Send inn en oppdragsbestilling til IM Elvebakken<br>
+          og få raskere og mer presis oppfølging —<br>
+          alt samlet på ett sted.
+        </p>
+
+        <a class="btn" href="#skjema">Send inn bestilling</a>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="paper"></div>
+        <div class="laptop"></div>
+        <div class="check">✓</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HVORDAN -->
+  <section id="hvordan" class="how">
+    <div class="container">
+      <h2>Hvordan fungerer det?</h2>
+
+      <div class="card-row">
+        <div class="card">
+          <div class="icon">📝</div>
+          <h3>Fyll ut skjema</h3>
+          <p>Beskriv oppdraget og ønsket leveringsfrist.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">✉️</div>
+          <h3>Send inn</h3>
+          <p>Vi mottar all informasjon samlet og strukturert.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">✅</div>
+          <h3>Vi følger opp</h3>
+          <p>Du får bekreftelse og videre dialog ved behov.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKJEMA -->
+  <section id="skjema" class="form-section">
+    <div class="container">
+      <h2>Send inn oppdragsbestilling</h2>
+
+      <p style="text-align:center; color:#64748b; font-weight:600; margin-bottom:14px;">
+        Fyll ut skjemaet for å sende inn en bestilling. Du får bekreftelse når den er sendt.
+      </p>
+
+      <div class="form-card">
+        <form id="bestillingForm">
+
+          <label>Fullt navn</label>
+          <input id="navn" type="text" placeholder="Ola Nordmann" required>
+
+          <label>E-post</label>
+          <input
+            id="epost"
+            type="email"
+            placeholder="ola@gmail.com"
+            required
+            pattern="^[A-Za-z0-9._%+-]+@(gmail\.com|icloud\.com|outlook\.com|hotmail\.com|live\.com|yahoo\.com)$"
+            title="Bruk en gyldig e-post med domene som gmail.com, icloud.com osv."
+          >
+
+          <label>Telefon (valgfritt)</label>
+          <input
+            id="telefon"
+            type="text"
+            placeholder="8 siffer"
+            inputmode="numeric"
+            maxlength="8"
+            pattern="[0-9]{8}"
+            title="Telefonnummer må være nøyaktig 8 siffer."
+          >
+
+          <label>Beskrivelse av oppdrag</label>
+          <textarea id="beskrivelse" placeholder="Beskriv hva du ønsker..." required></textarea>
+
+          <label>Ønsket deadline</label>
+          <input id="deadline" type="date" required>
+
+          <button class="btn wide" type="submit">Send inn bestilling</button>
+
+          <p id="status" class="status"></p>
+
+          <p style="margin-top:10px; color:#64748b; font-weight:600; font-size:13px;">
+            Ved innsending lagrer vi informasjonen for å behandle bestillingen.
+            <a href="Personvern.html" style="color:#0f4d86; text-decoration:none; font-weight:800;">
+              Les personvern
+            </a>
+          </p>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="logo-box">IM</div>
+        <strong>Elvebakken</strong>
+      </div>
+
+      <div class="footer-right">
+        Kontakt: <a href="mailto:info@elvebakken.no">info@elvebakken.no</a>
+        <span class="dot">•</span>
+        <a href="Personvern.html">Personvern</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
